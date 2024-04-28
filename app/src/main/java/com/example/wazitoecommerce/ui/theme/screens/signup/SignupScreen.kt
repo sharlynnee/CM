@@ -1,108 +1,124 @@
 package com.example.wazitoecommerce.ui.theme.screens.signup
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.wazitoecommerce.data.AuthViewModel
-import com.example.wazitoecommerce.navigation.LOGIN_URL
-import com.example.wazitoecommerce.ui.theme.WazitoECommerceTheme
+import com.example.wazitoecommerce.R
+import com.example.wazitoecommerce.ui.theme.screens.login.LoginScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignupScreen(navController:NavHostController){
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+fun SignUpScreen(navController: NavHostController) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
+    val focusManager = LocalFocusManager.current
+    val context = LocalContext.current
+
+
+    val backgroundImageRes = R.drawable.b7
+
+    Surface(
+        modifier = Modifier.fillMaxSize()
     ) {
-        Text(
-            text = "Signup Here",
-            fontSize = 40.sp,
-            fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Cursive
-        )
-        Spacer(modifier = Modifier.height(30.dp))
-
-        var name by remember { mutableStateOf("") }
-        var email by remember { mutableStateOf("") }
-        var password by remember { mutableStateOf("") }
-
-        OutlinedTextField(
-            value = name,
-            onValueChange = {name = it},
-            label = { Text(text = "Enter name")},
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            // Background image
+            Image(
+                painter = painterResource(id = backgroundImageRes),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.FillBounds
             )
-        )
 
-        Spacer(modifier = Modifier.height(30.dp))
-
-        OutlinedTextField(
-            value = email,
-            onValueChange = {email = it},
-            label = { Text(text = "Enter email")},
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Email
-            )
-        )
-
-        Spacer(modifier = Modifier.height(30.dp))
-        OutlinedTextField(
-            value = password,
-            onValueChange = {password = it},
-            label = { Text(text = "Enter password")},
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Password
-            )
-        )
-
-        Spacer(modifier = Modifier.height(30.dp))
-
-        val context = LocalContext.current
-        val authViewModel = AuthViewModel(navController, context)
-        Button(onClick = {
-            authViewModel.signup(name, email, password)
-        }) {
-            Text(text = "Register")
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Sign Up",
+                    modifier = Modifier.padding(bottom = 24.dp)
+                )
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text("Email") },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text("Password") },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    visualTransformation = PasswordVisualTransformation(),
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                OutlinedTextField(
+                    value = confirmPassword,
+                    onValueChange = { confirmPassword = it },
+                    label = { Text("Confirm Password") },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    visualTransformation = PasswordVisualTransformation(),
+                    isError = password != confirmPassword && confirmPassword.isNotBlank(),
+                    trailingIcon = {
+                        if (password != confirmPassword && confirmPassword.isNotBlank()) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.child7),
+                                contentDescription = "Password Mismatch",
+                                modifier = Modifier.padding(end = 8.dp)
+                            )
+                        }
+                    }
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+                Button(
+                    onClick = {
+                        focusManager.clearFocus()
+                        onSignUpClicked()
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Sign Up")
+                }
+            }
         }
-
-        Spacer(modifier = Modifier.height(30.dp))
-
-        Button(onClick = {
-            navController.navigate(LOGIN_URL)
-        }) {
-            Text(text = "Login instead")
-        }
-
     }
+}
+
+fun onSignUpClicked() {
+    TODO("Not yet implemented")
 }
 
 @Composable
 @Preview(showBackground = true)
-fun SignupScreenPreview(){
-    WazitoECommerceTheme {
-        SignupScreen(navController = rememberNavController())
-    }
+fun SignUpScrenPreview(){
+    SignUpScreen(navController = rememberNavController())
 }
