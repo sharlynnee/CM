@@ -119,6 +119,6 @@ fun onSignUpClicked() {
 
 @Composable
 @Preview(showBackground = true)
-fun SignUpScrenPreview(){
+fun SignUpScreenPreview(){
     SignUpScreen(navController = rememberNavController())
 }
