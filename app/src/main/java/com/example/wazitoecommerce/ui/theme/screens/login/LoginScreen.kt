@@ -75,6 +75,7 @@ fun LoginScreen(navController: NavHostController) {
                     Button(
                         onClick = { /* Handle login button click */ },
                         modifier = Modifier.fillMaxWidth()
+
                     ) {
                         Text(text = "Login")
                     }

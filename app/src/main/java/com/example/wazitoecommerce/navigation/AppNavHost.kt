@@ -47,7 +47,7 @@ fun AppNavHost(
         composable(WELCOME_URL){
             WelcomeScreen(navController = navController )
         }
-        composable(Dashboard_URL){
+        composable(DASHBOARD_URL){
             DashboardScreen(navController = navController )
         }
     }
