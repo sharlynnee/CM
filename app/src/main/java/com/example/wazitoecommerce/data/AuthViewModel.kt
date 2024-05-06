@@ -4,7 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.widget.Toast
 import androidx.navigation.NavHostController
-import com.example.wazitoecommerce.models.User
+import com.example.wazitoecommerce.models.ChildUser
 import com.example.wazitoecommerce.navigation.HOME_URL
 import com.example.wazitoecommerce.navigation.LOGIN_URL
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +24,7 @@ class AuthViewModel(var navController:NavHostController, var context:Context) {
         progress.show()
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             var userId = mAuth.currentUser!!.uid
-            var userProfile = User(name, email, password, userId)
+            var userProfile = ChildUser(name, email, password, userId)
             // Create a reference table called Users inside of the Firebase database
             var usersRef = FirebaseDatabase.getInstance().getReference()
                                     .child("Users/$userId")

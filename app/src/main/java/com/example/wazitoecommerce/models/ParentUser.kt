@@ -1,6 +1,6 @@
 package com.example.wazitoecommerce.models
 
-class User {
+class ParentUser {
     var name:String = ""
     var email:String = ""
     var password:String = ""
