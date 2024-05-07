@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.wazitoecommerce.navigation.ADD_PRODUCTS_URL
-import com.example.wazitoecommerce.navigation.VIEW_PRODUCTS_URL
+import com.example.wazitoecommerce.navigation.ADD_CHILDREN_URL
+import com.example.wazitoecommerce.navigation.VIEW_CHILDREN_URL
 import com.example.wazitoecommerce.ui.theme.WazitoECommerceTheme
 
 @Composable
@@ -34,13 +34,13 @@ fun HomeScreen(navController:NavHostController){
         )
         Spacer(modifier = Modifier.height(30.dp))
         Button(onClick = {
-            navController.navigate(ADD_PRODUCTS_URL)
+            navController.navigate(ADD_CHILDREN_URL)
         }) {
             Text(text = "Add Products")
         }
         Spacer(modifier = Modifier.height(30.dp))
         Button(onClick = {
-            navController.navigate(VIEW_PRODUCTS_URL)
+            navController.navigate(VIEW_CHILDREN_URL)
         }) {
             Text(text = "View Products")
         }

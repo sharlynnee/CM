@@ -86,4 +86,8 @@ class ChildViewModel(var navController:NavHostController, var context: Context) 
         ref.removeValue()
         Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
     }
+
+
+
+
 }
