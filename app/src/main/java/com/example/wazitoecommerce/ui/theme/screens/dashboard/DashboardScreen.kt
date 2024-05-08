@@ -1,9 +1,12 @@
 package com.example.wazitoecommerce.ui.theme.screens.dashboard
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddCircle
@@ -39,12 +42,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.wazitoecommerce.R
 import com.example.wazitoecommerce.ui.theme.WazitoECommerceTheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -55,7 +68,6 @@ fun DashboardScreen(navController:NavHostController){
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         var selected by remember { mutableIntStateOf(0) }
         Scaffold(
             bottomBar = {
@@ -111,8 +123,28 @@ fun DashboardScreen(navController:NavHostController){
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                    Text(text = "Homepage")
 
+                    Text(text = "Welcome to our community dedicated to reuniting families.",
+                        style = TextStyle(
+                            color = Color.LightGray,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            shadow = Shadow(Color.LightGray),
+                            letterSpacing = 0.2.sp,
+
+                        )
+
+                    )
+                    Spacer(modifier = Modifier.height(14.dp))
+                    Text(text = "If your child is missing,use our app to quickly and easily post their image and information.Together,we can bring them home safely.",
+                        style = TextStyle(
+                            color = Color.DarkGray,
+                            fontSize = 40.sp,
+                            fontWeight = FontWeight.Bold,
+                            shadow = Shadow(Color.DarkGray),
+                            letterSpacing = 0.3.sp,
+
+                            ) )
                 }
 
             }

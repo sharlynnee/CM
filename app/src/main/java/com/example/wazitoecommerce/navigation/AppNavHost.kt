@@ -15,7 +15,7 @@ import com.example.wazitoecommerce.ui.theme.screens.parents.AddParentsScreen
 import com.example.wazitoecommerce.ui.theme.screens.parents.ViewParentsScreen
 import com.example.wazitoecommerce.ui.theme.screens.signup.SignUpScreen
 import com.example.wazitoecommerce.ui.theme.screens.splash.SplashScreen
-import com.example.wazitoecommerce.ui.theme.screens.welcome.WelcomeScreen
+
 
 
 @Composable
@@ -46,9 +46,6 @@ fun AppNavHost(
 
         composable(SPLASH_URL){
             SplashScreen(navController = navController )
-        }
-        composable(WELCOME_URL){
-            WelcomeScreen(navController = navController )
         }
         composable(DASHBOARD_URL){
             DashboardScreen(navController = navController )

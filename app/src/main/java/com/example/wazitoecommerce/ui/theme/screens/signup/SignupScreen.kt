@@ -2,29 +2,29 @@ package com.example.wazitoecommerce.ui.theme.screens.signup
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.R
-import com.example.wazitoecommerce.ui.theme.screens.login.LoginScreen
+import com.example.wazitoecommerce.navigation.DASHBOARD_URL
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,7 +36,7 @@ fun SignUpScreen(navController: NavHostController) {
     val context = LocalContext.current
 
 
-    val backgroundImageRes = R.drawable.b7
+    val backgroundImageRes = R.drawable.background
 
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -108,6 +108,18 @@ fun SignUpScreen(navController: NavHostController) {
                 ) {
                     Text("Sign Up")
                 }
+                Text(text = "Already have an Account?Login",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center)
+                Button(
+                    onClick = {
+                        navController.navigate(DASHBOARD_URL)
+                    },
+                    modifier = Modifier
+                        .padding(start = 30.dp, end = 30.dp)
+                )
             }
         }
     }
@@ -115,6 +127,9 @@ fun SignUpScreen(navController: NavHostController) {
 
 fun onSignUpClicked() {
     TODO("Not yet implemented")
+}
+fun Button(onClick: @Composable Function<Unit>, modifier: @Composable () -> Unit) {
+
 }
 
 @Composable

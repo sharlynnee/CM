@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -31,6 +32,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.R
 import com.example.wazitoecommerce.navigation.HOME_URL
+import com.example.wazitoecommerce.navigation.SIGNUP_URL
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -54,10 +56,11 @@ fun SplashScreen(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center) {
 
+
         val coroutine = rememberCoroutineScope()
         coroutine.launch {
             delay(2000)
-            navController.navigate(HOME_URL)
+            navController.navigate(SIGNUP_URL)
         }
         Image(painter = painterResource(id = R.drawable.child7),
             contentDescription ="Splash",

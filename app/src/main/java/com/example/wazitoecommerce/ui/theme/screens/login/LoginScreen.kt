@@ -3,8 +3,11 @@ package com.example.wazitoecommerce.ui.theme.screens.login
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -19,10 +22,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.R
+import com.example.wazitoecommerce.navigation.DASHBOARD_URL
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,7 +36,7 @@ fun LoginScreen(navController: NavHostController) {
     val passwordState = remember { mutableStateOf("") }
 
     // Background image
-    val backgroundImage: Painter = painterResource(id = R.drawable.b7)
+    val backgroundImage: Painter = painterResource(id = R.drawable.background)
 
     // Main UI
     Scaffold(
@@ -45,7 +49,6 @@ fun LoginScreen(navController: NavHostController) {
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.fillMaxSize()
                 )
-
                 // Login Form
                 Column(
                     modifier = Modifier
@@ -73,17 +76,20 @@ fun LoginScreen(navController: NavHostController) {
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(
-                        onClick = { /* Handle login button click */ },
+                        onClick = { navController.navigate(DASHBOARD_URL) },
                         modifier = Modifier.fillMaxWidth()
 
                     ) {
                         Text(text = "Login")
                     }
+
                 }
             }
         }
     )
 }
+
+
 
 
 @Composable
